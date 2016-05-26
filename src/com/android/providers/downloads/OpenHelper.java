@@ -79,9 +79,9 @@ public class OpenHelper {
 
             final Intent intent = new Intent(Intent.ACTION_VIEW);
 
-            if ("application/vnd.android.package-archive".equals(mimeType)) {
+	    if (("application/vnd.android.package-archive".equals(mimeType))||(file.toString().endsWith(".apk"))) {
                 // PackageInstaller doesn't like content URIs, so open file
-                intent.setDataAndType(localUri, mimeType);
+		intent.setDataAndType(localUri, "application/vnd.android.package-archive");
 
                 // Also splice in details about where it came from
                 final Uri remoteUri = getCursorUri(cursor, COLUMN_URI);
